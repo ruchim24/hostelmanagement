@@ -5,7 +5,8 @@ const HttpError = require('./models/https-error');
 const userRoutes = require('./routes/user-routes');
 
 const app = express();
-const url = 'mongodb://127.0.0.1:27017/hostelmanagement'
+// const url = 'mongodb://127.0.0.1:27017/hostelmanagement'
+const url = 'mongodb+srv://tester:test123@cluster0.q4y4i.mongodb.net/hostelmanagement?retryWrites=true&w=majority'
 mongoose.connect(url, { useNewUrlParser: true })
 
 app.use(bodyParser.json());
