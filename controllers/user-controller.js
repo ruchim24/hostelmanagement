@@ -4,20 +4,28 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/https-error');
 const User = require('../models/user');
 
-const DUMMY_USERS = [
-    {
-    id:'u1',
-    name : 'Ruchi',
-    email:'test@test.com',
-    password:'testers'
+// const DUMMY_USERS = [
+//     {
+//     id:'u1',
+//     name : 'Ruchi',
+//     email:'test@test.com',
+//     password:'testers'
 
-    }
-];
+//     }
+// ];
 
+// const fillData = async (req,res,next) => {
+   
+//     const id = req.params.id;
+//     let user;
+//     user = await User.findById(id);
+//     res.json(user.id);
+    
+// }
 
 
 const login = async (req,res,next) => {
-    const { email,password } = req.body;
+    const { email,password,_id } = req.body;
    
     let existingUser;
 
@@ -37,8 +45,8 @@ const login = async (req,res,next) => {
         );
         return next(error);
     }
-
-    res.json({message:'Logged in'});
+    const id = existingUser._id;
+    res.json(id);
 
 };
 
