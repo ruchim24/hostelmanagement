@@ -22,16 +22,9 @@ const studentSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    // pswd:{
-    //     type:String,
-    //     required:true
-    // },
+    
     phone:{
-        type:Number,
-        required:true,
-        minLength:10,
-        maxLength:10,
-        unique:true
+        type:String,
     },
     gender:{
         type:String,
@@ -39,18 +32,16 @@ const studentSchema=new mongoose.Schema({
     },
     year:{
         type:String,
-        required:true
+    
     },
-    seater:{
-        type:Number,
+    hostel:{
+        type:String,
         required:true
-    },
-    hostels:{
-        type:String
+
     },
     address:{
         type:String,
-        required:true
+       required:true
     }
 })
 

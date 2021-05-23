@@ -7,9 +7,9 @@ const userRoutes = require('./routes/user-routes');
 const app = express();
 // const url = 'mongodb://127.0.0.1:27017/hostelmanagement'
 const url = 'mongodb+srv://tester:test123@cluster0.q4y4i.mongodb.net/hostelmanagement?retryWrites=true&w=majority'
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(url, { useNewUrlParser: true,useUnifiedTopology:true,useCreateIndex:true })
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use((req,res,next) => {
   res.setHeader('Access-Control-Allow-Origin','*');
@@ -35,12 +35,4 @@ app.use((error, req, res, next) => {
 
 
 
-// mongoose
-// .connect('mongodb+srv://tester:test123@cluster0.q4y4i.mongodb.net/hostelmanagement?retryWrites=true&w=majority')
-// .then(() => {
-//   app.listen(4000);
-// })
-// .catch(err => {
-//   console.log(err);
-// });
 app.listen(8080);
