@@ -5,7 +5,7 @@ const Student = require('../models/student');
 
 const router = express.Router();
 
-
+router.get('/:uid/getUserById',userController.getData);
 router.post('/registration',userController.storeData);
 
 

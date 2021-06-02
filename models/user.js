@@ -15,6 +15,7 @@ const userSchema = new Schema({
     address:{type:String,required:true,minlength:10},
     gender:{type:String,required:true},
     year:{type:Number,required:true},
+    image:{type:String,required:true}
   
    
    

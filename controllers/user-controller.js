@@ -6,6 +6,40 @@ const User = require('../models/user');
 const Student = require('../models/student');
 
 
+
+const getData = async (req,res,next) => {
+    const userId = req.params.uid;
+    let user;
+    try{
+         user = await User.findById(userId);
+    } catch (err) {
+        const error = new HttpError(
+            'Something went wrong',500
+        );
+        return next(error);
+    }
+    if(!user){
+        const error = new HttpError(
+            'No user found for given user id.',500
+        );
+        return next(error);
+    }
+    const fname = user.fname;
+    const lname = user.lname;
+    const dname = user.dname;
+    const mname = user.mname;
+    const email = user.email;
+    const gender = user.gender;
+    const year = user.year;
+    const mobile = user.mobile;
+    const address = user.address;
+    const image = user.image;
+  
+    res.json({fname,lname,dname,mname,email,gender,year,mobile,address,image});
+   
+    };
+
+
 const storeData = async(req,res,next)=>{
     const uid = req.params.uid;
     const {fname,lname,dname,mname,email,phone,hostel,
@@ -58,6 +92,6 @@ const login = async (req,res,next) => {
 
 };
 
-
+exports.getData = getData;
 exports.login = login;
 exports.storeData = storeData;
